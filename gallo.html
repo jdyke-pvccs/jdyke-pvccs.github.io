@@ -62,6 +62,48 @@
                 "\nSales tax:        " + dollar.format(salestaxamount) +
                 "\nTotal:            " + dollar.format(total) + howtopay); 
         } //end function pizza order
+
+    function suborder()
+        {
+        //prices & tax rate constants
+            const salestaxrate = 0.07;
+            const pricehotitalian = 12.99;
+            const pricehamcheese = 10.99;
+            const pricephillycheese = 12.99;
+            const pricesmokedturkey = 11.99;
+            const dollar = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD',});
+            const howtopay = "\n\nCredit, Debit, and Cash accepted";
+            const line ="\n-----------------------------------";
+
+          //variables for calculated amounts
+             var numsubs = 0;
+             var typeofsub = 0;
+             var subcost = 0;
+             var salestaxamount = 0;
+             var total = 0;
+
+        //ask user for input
+            part1 = "List the four kinds of subs you want to order?";
+            part2 = "\nEnter: \n\t 1 for Hot italian \n\t 2 for Ham & Cheese \n\t 3 for Philly Cheese Steak \n\t 4 for Smoked Trukey";
+            typeofsub = prompt(part1 + part2);
+            numsubs = prompt("Enter the number of Gallo Subs you would like to order;");
+
+        //calculate amounts
+            if (typeofsub = "1") subcost = numsubs * pricehotitalian;
+            if (typeofsub = "2") subcost = numsubs * pricehamcheese;
+            if (typeofsub = "3") subcost = numsubs * pricephillycheese;
+            if (typeofsub = "4") subcost = numsubs * pricesmokedturkey;
+
+            if (numsubs >= 0) salestaxamount = subcost * salestaxrate;
+            total = subcost + salestaxamount;
+
+        //display results
+            alert("\nGALLO'S PIZZA & SUBS SHOP" + line +
+                "\nNumber of Subs: " + numsubs +
+                "\nSub cost:        " + dollar.format(subcost) +
+                "\nSales tax:      " + dollar.format(salestaxamount) +
+                "\nTotal:          " + dollar.format(total) + howtopay); 
+        } //end function sub order
 </script>
 </head>
 
@@ -84,13 +126,16 @@
         <tr><td>Medium    </td>  <td>$10.99</td></tr>
         <tr><td>Large     </td>  <td>$13.99</td></tr>
         <tr><td>XLarge    </td>  <td>$17.99</td></tr>
+        <tr><td>Hot Italian Sub</td> <td>12.99</td></tr>
+        <tr><td>Ham & cheese Sub</td> <td>10.99</td></tr>
+        <tr><td>Philly Cheese Steak</td> <td>12.99</td></tr>
+        <tr><td>Smoked Turkey Sub</td> <td>11.99</td></tr>
         <tr><td>Sales Tax </td>  <td>7%   </td></tr>
         <tr><td colspan="2">Gallo Pizza Party:
             <br />Order 10 or more pizzas, receive a 15% discount!</td></tr>
         <tr><td colspan="2">
-        <form><input type="button" value="Click here to order pizza"
-            class="button" onclick="pizzaorder()" /></form> </td></tr>
+        <form><input type="button" value="Click here to order"
+            class="button" onclick="pizzaorder(); suborder()" /></form> </td></tr>
     </table>
 </body>
-
 </html>
